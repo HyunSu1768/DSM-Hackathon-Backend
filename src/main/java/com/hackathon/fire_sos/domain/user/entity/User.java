@@ -14,8 +14,8 @@ import org.springframework.data.geo.Point;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "tbl_user")
-public class User extends BaseTimeEntity {
+@Entity
+public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
