@@ -1,10 +1,11 @@
-package com.example.mukgen.global.config.security;
+package com.hackathon.fire_sos.global.config.security;
 
-import com.example.mukgen.global.config.FilterConfig;
-import com.example.mukgen.global.config.security.auth.CustomUserDetailService;
-import com.example.mukgen.global.config.security.jwt.JwtResolver;
-import com.example.mukgen.global.config.security.jwt.JwtTokenProvider;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hackathon.fire_sos.global.config.FilterConfig;
+import com.hackathon.fire_sos.global.config.security.auth.CustomUserDetailService;
+import com.hackathon.fire_sos.global.config.security.jwt.JwtResolver;
+import com.hackathon.fire_sos.global.config.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,7 +52,6 @@ public class SecurityConfig{
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
 

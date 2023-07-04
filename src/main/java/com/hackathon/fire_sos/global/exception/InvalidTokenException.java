@@ -1,7 +1,8 @@
-package com.example.mukgen.global.exception;
+package com.hackathon.fire_sos.global.exception;
 
-import com.example.mukgen.global.error.exception.BusinessException;
-import com.example.mukgen.global.error.exception.ErrorCode;
+
+import com.hackathon.fire_sos.global.error.exception.BusinessException;
+import com.hackathon.fire_sos.global.error.exception.ErrorCode;
 
 public class InvalidTokenException extends BusinessException {
     public static final BusinessException EXCEPTION = new InvalidTokenException();

@@ -1,1 +1,30 @@
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/sos}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:qpwoeiru1768}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
+  redis:
+    port: ${REDIS_PORT:6379}
+    host: ${REDIS_HOST:localhost}
+
+jwt:
+  secretKey: ${JWT_SECRET_KEY:asdjfkasdhfjkashdasdkjflasasjdklfasjlkdfjaslkdfjlsadjflsadfjlasdjdlkfasjldkfjasldfsalfkashdfkahsdjkfahskdf}
+  accessExpiredExp: ${JWT_ACCESS_EXP:1800000}
+  refreshExpiredExp: ${JWT_REFRESH_EXP:432000000}
+  header: ${JWT_HEADER:Authorization}
+  prefix: ${JWT_PREFIX:Bearer}
+
+
+

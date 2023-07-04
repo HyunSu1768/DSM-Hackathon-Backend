@@ -1,7 +1,8 @@
-package com.example.mukgen.domain.auth.service.exception;
+package com.hackathon.fire_sos.domain.user.service.exception;
 
-import com.example.mukgen.global.error.exception.BusinessException;
-import com.example.mukgen.global.error.exception.ErrorCode;
+
+import com.hackathon.fire_sos.global.error.exception.BusinessException;
+import com.hackathon.fire_sos.global.error.exception.ErrorCode;
 
 public class PassWordCheckMismatchException extends BusinessException {
 

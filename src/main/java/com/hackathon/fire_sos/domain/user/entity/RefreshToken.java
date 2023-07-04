@@ -1,4 +1,4 @@
-package com.example.mukgen.domain.auth.entity;
+package com.hackathon.fire_sos.domain.user.entity;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,7 +1,8 @@
-package com.example.mukgen.global.error;
+package com.hackathon.fire_sos.global.error;
 
-import com.example.mukgen.global.error.exception.BusinessException;
-import com.example.mukgen.global.error.exception.ErrorCode;
+
+import com.hackathon.fire_sos.global.error.exception.BusinessException;
+import com.hackathon.fire_sos.global.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolationException;
+
 
 @Slf4j
 @RestControllerAdvice

@@ -1,7 +1,8 @@
-package com.example.mukgen.domain.user.service;
+package com.hackathon.fire_sos.domain.user.service;
 
-import com.example.mukgen.domain.user.entity.User;
-import com.example.mukgen.domain.user.repository.UserRepository;
+
+import com.hackathon.fire_sos.domain.user.entity.User;
+import com.hackathon.fire_sos.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

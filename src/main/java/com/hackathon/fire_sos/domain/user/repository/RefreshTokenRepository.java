@@ -1,6 +1,7 @@
-package com.example.mukgen.domain.auth.repository;
+package com.hackathon.fire_sos.domain.user.repository;
 
-import com.example.mukgen.domain.auth.entity.RefreshToken;
+
+import com.hackathon.fire_sos.domain.user.entity.RefreshToken;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

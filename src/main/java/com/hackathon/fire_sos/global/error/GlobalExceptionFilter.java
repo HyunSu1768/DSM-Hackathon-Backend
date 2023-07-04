@@ -1,8 +1,8 @@
-package com.example.mukgen.global.error;
+package com.hackathon.fire_sos.global.error;
 
-import com.example.mukgen.global.error.exception.BusinessException;
-import com.example.mukgen.global.error.exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hackathon.fire_sos.global.error.exception.BusinessException;
+import com.hackathon.fire_sos.global.error.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.filter.OncePerRequestFilter;
 

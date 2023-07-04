@@ -1,11 +1,11 @@
-package com.example.mukgen.global.config;
+package com.hackathon.fire_sos.global.config;
 
-import com.example.mukgen.global.config.security.auth.CustomUserDetailService;
-import com.example.mukgen.global.config.security.jwt.JwtFilter;
-import com.example.mukgen.global.config.security.jwt.JwtResolver;
-import com.example.mukgen.global.config.security.jwt.JwtTokenProvider;
-import com.example.mukgen.global.error.GlobalExceptionFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hackathon.fire_sos.global.config.security.auth.CustomUserDetailService;
+import com.hackathon.fire_sos.global.config.security.jwt.JwtFilter;
+import com.hackathon.fire_sos.global.config.security.jwt.JwtResolver;
+import com.hackathon.fire_sos.global.config.security.jwt.JwtTokenProvider;
+import com.hackathon.fire_sos.global.error.GlobalExceptionFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,4 +1,4 @@
-package com.example.mukgen.global.config.redis;
+package com.hackathon.fire_sos.global.config.redis;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

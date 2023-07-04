@@ -1,4 +1,4 @@
-package com.example.mukgen.global.error.exception;
+package com.hackathon.fire_sos.global.error.exception;
 
 public class ExpiredTokenException extends BusinessException{
 

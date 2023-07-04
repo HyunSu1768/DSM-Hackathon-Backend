@@ -1,4 +1,4 @@
-package com.example.mukgen.global.common.entity;
+package com.hackathon.fire_sos.global.common.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

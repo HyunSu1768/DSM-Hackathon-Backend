@@ -7,22 +7,24 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Configuration
-public class FirebaseInitialize {
-    @Bean
-    public FirebaseApp firebaseApp() throws IOException {
-        FileInputStream serviceAccountFile = new FileInputStream("src/main/resources/serviceAccount-File.json");
-        FirebaseOptions options = FirebaseOptions
-                .builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccountFile))
+public class FirebaseInitializer {
+
+    @PostConstruct
+    public void initialize() throws IOException {
+        FileInputStream serviceAccount =
+                new FileInputStream("/Users/buhyeonsu/Desktop/Coding/Backend/fire_SOS/src/main/resources/firebase/service-account-file.json");
+
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setProjectId("soss-2ec9c")
                 .build();
-        return FirebaseApp.initializeApp(options);
-    }
-    @Bean
-    public FirebaseMessaging firebaseMessaging(FirebaseApp firebaseApp){
-        return FirebaseMessaging.getInstance(firebaseApp);
+
+        FirebaseApp.initializeApp(options);
     }
 }

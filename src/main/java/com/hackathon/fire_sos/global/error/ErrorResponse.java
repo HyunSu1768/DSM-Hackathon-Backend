@@ -1,6 +1,6 @@
-package com.example.mukgen.global.error;
+package com.hackathon.fire_sos.global.error;
 
-import com.example.mukgen.global.error.exception.ErrorCode;
+import com.hackathon.fire_sos.global.error.exception.ErrorCode;
 import lombok.*;
 
 import java.time.LocalDateTime;

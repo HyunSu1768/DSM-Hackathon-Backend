@@ -1,6 +1,7 @@
-package com.example.mukgen.global.config.security.jwt;
+package com.hackathon.fire_sos.global.config.security.jwt;
 
-import com.example.mukgen.global.config.security.auth.CustomUserDetailService;
+
+import com.hackathon.fire_sos.global.config.security.auth.CustomUserDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

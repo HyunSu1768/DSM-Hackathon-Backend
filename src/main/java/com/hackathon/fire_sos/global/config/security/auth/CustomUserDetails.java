@@ -1,6 +1,7 @@
-package com.example.mukgen.global.config.security.auth;
+package com.hackathon.fire_sos.global.config.security.auth;
 
-import com.example.mukgen.domain.user.entity.User;
+
+import com.hackathon.fire_sos.domain.user.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +19,7 @@ public record CustomUserDetails(User user) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority(user.getRole().toString())));
+        return new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority(user.getUserRole().toString())));
     }
 
     @Override

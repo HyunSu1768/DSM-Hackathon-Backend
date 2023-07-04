@@ -1,12 +1,13 @@
-package com.example.mukgen.global.config.security.jwt;
+package com.hackathon.fire_sos.global.config.security.jwt;
 
 
-import com.example.mukgen.domain.auth.controller.response.TokenResponse;
-import com.example.mukgen.domain.auth.entity.RefreshToken;
-import com.example.mukgen.domain.auth.repository.RefreshTokenRepository;
-import com.example.mukgen.domain.user.repository.UserRepository;
-import com.example.mukgen.global.exception.ExpiredTokenException;
-import com.example.mukgen.global.exception.InvalidTokenException;
+
+import com.hackathon.fire_sos.domain.user.controller.dto.response.LoginResponse;
+import com.hackathon.fire_sos.domain.user.entity.RefreshToken;
+import com.hackathon.fire_sos.domain.user.repository.RefreshTokenRepository;
+import com.hackathon.fire_sos.domain.user.repository.UserRepository;
+import com.hackathon.fire_sos.global.error.exception.ExpiredTokenException;
+import com.hackathon.fire_sos.global.error.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -20,13 +21,17 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private final JwtProperties jwtProperties;
+    private Long accessExp = 1800 * 1000L;
+
+    private Long refreshExp = 432000* 1000L;
+
+    private String secretKey = "jaskldfkjlasdjflasdhjfklashdjfklashdfklasdhfkas";
 
     private final RefreshTokenRepository refreshTokenRepository;
 
     private final UserRepository userRepository;
 
-    public TokenResponse createToken(String accountId) {
+    public LoginResponse createToken(String accountId) {
 
         String accessToken = createAccessToken(accountId);
         String refreshToken = createRefreshToken();
@@ -38,13 +43,13 @@ public class JwtTokenProvider {
                 .build()
         );
 
-        return TokenResponse.builder()
+        return LoginResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
     }
 
-    public TokenResponse reIssue(String rfToken) {
+    public LoginResponse reIssue(String rfToken) {
 
         RefreshToken token = refreshTokenRepository.findByToken(rfToken)
                 .orElseThrow(()-> InvalidTokenException.EXCEPTION);
@@ -64,8 +69,8 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .setSubject(accountId)
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiredExp()))
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
+                .setExpiration(new Date(now.getTime() + accessExp))
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
 
@@ -75,8 +80,8 @@ public class JwtTokenProvider {
 
         String rfToken = Jwts.builder()
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + jwtProperties.getRefreshExpiredExp()))
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
+                .setExpiration(new Date(now.getTime() + refreshExp))
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
 
         return rfToken;
@@ -85,7 +90,7 @@ public class JwtTokenProvider {
     //토큰에서 회원 정보 추출
     private Claims getBody(String token){
         try{
-            return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token).getBody();
+            return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         } catch (JwtException e){
             throw InvalidTokenException.EXCEPTION;
         }

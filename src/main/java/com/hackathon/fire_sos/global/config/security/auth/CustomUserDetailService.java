@@ -1,6 +1,7 @@
-package com.example.mukgen.global.config.security.auth;
+package com.hackathon.fire_sos.global.config.security.auth;
 
-import com.example.mukgen.domain.user.repository.UserRepository;
+
+import com.hackathon.fire_sos.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

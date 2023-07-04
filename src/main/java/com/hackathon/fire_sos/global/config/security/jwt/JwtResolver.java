@@ -1,4 +1,4 @@
-package com.example.mukgen.global.config.security.jwt;
+package com.hackathon.fire_sos.global.config.security.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,14 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class JwtResolver {
 
-    private final JwtProperties jwtProperties;
+    private String header = "Authorization";
+
+    private String prefix = "Bearer";
 
     public String resolveToken(HttpServletRequest request){
 
-        String bearerToken = request.getHeader(jwtProperties.getHeader());
+        String bearerToken = request.getHeader(header);
 
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(jwtProperties.getPrefix())
-                && bearerToken.length() > jwtProperties.getPrefix().length()+1){
+        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(prefix)
+                && bearerToken.length() > prefix.length()+1){
             return bearerToken.substring(7);
         }
         return null;
