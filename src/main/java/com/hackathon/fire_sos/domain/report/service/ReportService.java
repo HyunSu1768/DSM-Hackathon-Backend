@@ -51,7 +51,7 @@ public class ReportService {
         List<User> userList = userRepository.findUsersInRadius(report.getLatitude(), report.getLongitude());
         for (User user : userList){
             String deviceToken = user.getDeviceToken();
-            firebaseCloudMessageService.sendMessage(1,deviceToken);
+            firebaseCloudMessageService.sendMessage(deviceToken);
         }
     }
 
