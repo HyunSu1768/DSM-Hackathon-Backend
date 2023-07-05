@@ -10,7 +10,6 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
-@Where(clause = "is_completed = false")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -29,6 +28,8 @@ public class Report extends BaseTimeEntity {
     private Double latitude;
 
     private Double longitude;
+
+    private String description;
 
     private boolean isCompleted;
 

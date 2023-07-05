@@ -2,6 +2,7 @@ package com.hackathon.fire_sos.domain.report.controller;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.hackathon.fire_sos.domain.report.controller.dto.request.ReportRequest;
+import com.hackathon.fire_sos.domain.report.controller.dto.response.ReportMainResponse;
 import com.hackathon.fire_sos.domain.report.controller.dto.response.ReportResponseList;
 import com.hackathon.fire_sos.domain.report.service.ReportService;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +30,14 @@ public class ReportController {
         return reportService.findMyReport();
     }
 
-    @GetMapping("/recent")
-    public ReportResponseList findRecentReports(){
-        return reportService.findRecentReport();
+    @GetMapping("/all")
+    public ReportResponseList findAllReports(){
+        return reportService.findAllReport();
+    }
+
+    @GetMapping("/main")
+    public ReportMainResponse findMainReport(){
+        return reportService.findMainReport();
     }
 
 }

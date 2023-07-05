@@ -2,6 +2,7 @@ package com.hackathon.fire_sos.domain.report.service;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.hackathon.fire_sos.domain.report.controller.dto.request.ReportRequest;
+import com.hackathon.fire_sos.domain.report.controller.dto.response.ReportMainResponse;
 import com.hackathon.fire_sos.domain.report.controller.dto.response.ReportResponse;
 import com.hackathon.fire_sos.domain.report.controller.dto.response.ReportResponseList;
 import com.hackathon.fire_sos.domain.report.domain.Report;
@@ -34,6 +35,7 @@ public class ReportService {
     public void createReport(ReportRequest request) throws FirebaseMessagingException {
 
         Report report = Report.builder()
+                .description(request.getDescription())
                 .reporter(userFacade.currentUser())
                 .latitude(request.getLatitude())
                 .longitude(request.getLongitude())
@@ -51,7 +53,7 @@ public class ReportService {
         List<User> userList = userRepository.findUsersInRadius(report.getLatitude(), report.getLongitude());
         for (User user : userList){
             String deviceToken = user.getDeviceToken();
-            firebaseCloudMessageService.sendMessage(deviceToken);
+            firebaseCloudMessageService.sendMessage(deviceToken, "화재가 발생하였습니다",report.getPlace()+ " 주변에 화재가 발생하였습니다.");
         }
     }
 
@@ -91,16 +93,9 @@ public class ReportService {
                 .build();
     }
 
-    public ReportResponseList findRecentReport(){
-
-         LocalDateTime oneWeekAgo = LocalDateTime.now(ZoneId.systemDefault()).minusWeeks(1);
-
-         return ReportResponseList.builder()
-                 .reportResponseList(reportRepository.findReportsFromLastWeek(oneWeekAgo).stream()
-                         .map(ReportResponse::of)
-                         .toList())
-                 .build();
-
+    public ReportMainResponse findMainReport(){
+        return reportRepository.findFirstByOrderByCreatedAtDesc().map(ReportMainResponse::of)
+                .orElseThrow();
     }
 
 }

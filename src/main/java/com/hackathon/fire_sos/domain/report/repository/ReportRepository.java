@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
@@ -16,7 +17,6 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     List<Report> findAllByReporter(User Reporter);
 
-    @Query("SELECT r FROM Report r WHERE r.createdAt >= :startDate")
-    List<Report> findReportsFromLastWeek(@Param("startDate") LocalDateTime startDate);
+    Optional<Report> findFirstByOrderByCreatedAtDesc();
 
 }

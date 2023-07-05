@@ -13,6 +13,8 @@ public class ReportRequest {
 
     private Double longitude;
 
+    private String description;
+
     private String place;
 
 }

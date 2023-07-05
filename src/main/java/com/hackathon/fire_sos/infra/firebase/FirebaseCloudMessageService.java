@@ -10,7 +10,7 @@ import java.io.IOException;
 @Service
 public class FirebaseCloudMessageService {
 
-    public String sendMessage(String deviceToken) throws FirebaseMessagingException{
+    public String sendMessage(String deviceToken, String title, String body) throws FirebaseMessagingException{
         Message message = Message.builder()
                 .setAndroidConfig(AndroidConfig.builder()
                         .setTtl(3600*1000)
@@ -18,8 +18,8 @@ public class FirebaseCloudMessageService {
                         .setRestrictedPackageName("com.example.hackathon")
                         .setDirectBootOk(true)
                         .setNotification(AndroidNotification.builder()
-                                .setTitle("제목")
-                                .setBody("테스트")
+                                .setTitle(title)
+                                .setBody(body)
                                 .build())
                                 .build())
                         .setToken(deviceToken)
